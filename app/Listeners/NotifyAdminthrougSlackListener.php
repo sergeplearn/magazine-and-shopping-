@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyAdminthrougSlackListener
+class NotifyAdminthrougSlackListener implements ShouldQueue
 {
     /**
      * Create the event listener.

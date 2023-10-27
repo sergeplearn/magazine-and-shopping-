@@ -100,11 +100,20 @@
                 <a href="{{ route('shop_category.index') }}" class="list-group-item list-group-item-action py-2 ripple"
                 ><i class="fas fa-plus me-3 fa-fw"></i><span> category</span></a
                 >
+
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-                ><i class="fas fa-users fa-fw me-3"></i><span>Users</span></a
+                ></a
                 >
+
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-                ><i class="fas fa-money-bill fa-fw me-3"></i><span>Sales</span></a
+                ><span><b>User View</b></span></a
+                >
+
+                <a href="/" class="list-group-item list-group-item-action py-2 ripple"
+                ><i class="fas fa-users fa-fw me-3"></i><span>Blog</span></a
+                >
+                <a href="/shop" class="list-group-item list-group-item-action py-2 ripple"
+                ><i class="fas fa-money-bill fa-fw me-3"></i><span>shop</span></a
                 >
             </div>
         </div>

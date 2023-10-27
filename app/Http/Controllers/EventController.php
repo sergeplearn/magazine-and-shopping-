@@ -23,7 +23,7 @@ class EventController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['store']);
-        //$this->authorizeResource(event::class, 'event');
+
     }
 
 
@@ -47,7 +47,7 @@ class EventController extends Controller
         $max_date = Carbon::now()->addWeekday();
 
 
-       return view('mdmagazine.reservation.create',compact('max_date','min_date','event','phone'));
+       return view('mdmagazine.reservation.create',compact('max_date','min_date','event'));
     }
 
     /**
@@ -58,21 +58,19 @@ class EventController extends Controller
      */
     public function store(ReservationRequest $request)
     {
-
-
-       if (event::where('timeinterval_id',$request->timeinterval_id)->where('date',$request->date)->count() > 0)
+        if (event::where('timeinterval_id',$request->timeinterval_id)->where('date',$request->date)->count() > 0)
         {
             return "already taken";
         }
 
        $event = event::create($request->validated());
       // event(new BokkingReservationEvent($event));
+       if(!Auth::user() || Auth::user()->role === 'user')
+       {
+           return redirect('/thanks');
+       }
 
-            return "success";
-        
-
-
-
+       return redirect()->route('event.index');
     }
     public function edit(event $event)
     {
@@ -109,7 +107,7 @@ class EventController extends Controller
     public function destroy(event $event)
     {$this->authorize('delete', $event);
         $event->delete();
-        return redirect()->route('event.create');
+        return redirect()->route('event.index');
     }
 
 

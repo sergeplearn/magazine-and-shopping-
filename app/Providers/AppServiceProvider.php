@@ -27,10 +27,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['forms.blog_form','welcome','home','mdmagazine.products.edit','mdmagazine.products.newpost','mdmagazine.products.singlepost','mdmagazine.category.singlecategory','mdmagazine.time.index'],function ($view){
-            $view->with('categorys',category::paginate(6));
+            $view->with('categorys',category::category());
         });
 
-        View::composer(['welcome','mdmagazine.reservation.create','mdmagazine.reservation.edit'],function ($view){
+        View::composer(['mdmagazine.reservation.create','mdmagazine.reservation.view.create','mdmagazine.reservation.edit'],function ($view){
             $view->with('times',timeinterval::active()->get());
         });
 

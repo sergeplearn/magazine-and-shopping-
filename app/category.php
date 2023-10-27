@@ -15,6 +15,10 @@ class category extends Model
     protected $guarded = [];
 
 
+    public function scopeCategory($query)
+    {
+        return $query->paginate(6);
+    }
     public function searchableAs(): string
     {
         return 'categories_index';

@@ -32,6 +32,8 @@ Route::group(['namespace'=>'shop'],function (){
 });
 
 
+Route::get('/reservat','UserReservationController@create');
+Route::get('/thanks','UserReservationController@thank');
 
 Auth::routes();
 

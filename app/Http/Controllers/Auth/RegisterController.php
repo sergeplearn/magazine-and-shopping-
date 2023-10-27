@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-       // event(new NewUserHasRegisterEvent($newuser));
+        event(new NewUserHasRegisterEvent($newuser));
         return $newuser;
     }
 }

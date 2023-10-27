@@ -35,6 +35,7 @@
         a:hover {text-decoration: underline;
         text-decoration-color:orange;
 
+
             border-radius: 10px;
         }
 
@@ -43,6 +44,7 @@
         }
         .nav-item:hover {text-decoration: underline;
             text-decoration-color:orange;
+
         }
 
 
@@ -82,6 +84,11 @@
                         >shopping</a>
                     </li>
 
+
+                    <li class="nav-item " role="presentation">
+                        <a class="nav-link" href="/reservation">check reservations</a>
+                    </li>
+
                 </ul>
 
                 <ul class="nav nav-tabs d-flex flex-row" role="tablist">
@@ -118,15 +125,15 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                                <li class="nav-item"><a class="dropdown-item" href="#">Another action</a></li>
-                                @if(Auth::user()->role == 'admin')
+                                <li class="nav-item"><a class="dropdown-item" href="#">Profile</a></li>
+                                @if(Auth::user()->role == 'admin' || Auth::user()->role == 'super_admin'   )
                                 <li class="nav-item">
-                                    <a class="dropdown-item" href="/home">Another action</a>
+                                    <a class="dropdown-item" href="/home">Admin page</a>
 
                                 </li>
                                 @endif
 
-                                <li class="nav-item"><a class="dropdown-item" href="#">Something else here</a></li>
+
 
                                 <li class="nav-item"><a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
