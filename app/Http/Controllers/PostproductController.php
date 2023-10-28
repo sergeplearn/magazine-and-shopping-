@@ -106,6 +106,7 @@ class PostproductController extends Controller
     public function destroy(postproduct $postproduct)
     {
         $this->authorize('delete', $postproduct);
+        $postproduct->unsearchable();
         $postproduct->delete();
         return redirect()->back();
     }

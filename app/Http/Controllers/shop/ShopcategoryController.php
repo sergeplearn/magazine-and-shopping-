@@ -100,6 +100,7 @@ class ShopcategoryController extends Controller
     public function destroy(shop_category $shop_category)
     {
         $this->authorize('delete', $shop_category);
+        $shop_category->unsearchable();
         $shop_category->delete();
         return redirect()->route('shop_category.index');
     }

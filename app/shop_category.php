@@ -29,23 +29,15 @@ class shop_category extends Model
         return 'shop_categories_index';
     }
 
-    public function toSearchableArray()
-    {
-        $data = $this->toArray();
-        $data['shopping'] = $this->relationship_foo->toArray();
-        $data['shop_category'] = $this->relationship_bar->toArray();
-        // ... any other data
 
-        return $data;
-    }
-    /*public function toSearchableArray()
+    public function toSearchableArray()
     {
         return [
 
             'shop_category_name' => $this->shop_category_name,
 
         ];
-    }*/
+    }
 
     public function getRouteKeyName()
     {

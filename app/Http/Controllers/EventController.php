@@ -60,7 +60,12 @@ class EventController extends Controller
     {
         if (event::where('timeinterval_id',$request->timeinterval_id)->where('date',$request->date)->count() > 0)
         {
-            return "already taken";
+            if(!Auth::user() || Auth::user()->role === 'user')
+            {
+                return redirect('/reservat')->with('taken','sorry the time and date was taken');
+            }
+
+            return redirect()->route('event.create')->with('taken','sorry the time and date was taken');
         }
 
        $event = event::create($request->validated());
@@ -107,6 +112,7 @@ class EventController extends Controller
     public function destroy(event $event)
     {$this->authorize('delete', $event);
         $event->delete();
+        $event->unsearchable();
         return redirect()->route('event.index');
     }
 

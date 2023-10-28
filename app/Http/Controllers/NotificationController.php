@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
 
-
-//use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
+
     /**
      * Handle the incoming request.
      *
@@ -19,12 +18,13 @@ class NotificationController extends Controller
     public function unread($id, Request $request)
     {
 
+
         $id = request('id');
         $user = \App\User::find($id);
-        $count = 0;
 
         $unread = $user->unreadNotifications;
-        return view('notification.admin.unreadnewuser',compact('unread'));
+
+        return view('notification.admin.unreadnewuser',compact('unread','count'));
     }
 
     public function read($id, Request $request)

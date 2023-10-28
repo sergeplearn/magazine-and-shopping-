@@ -97,6 +97,7 @@ class ShoppingController extends Controller
     public function destroy(shopping $shopping)
     {
         $this->authorize('delete', $shopping);
+        $shopping->unsearchable();
         $shopping->delete();
         return redirect()->route('shopping.index');
     }

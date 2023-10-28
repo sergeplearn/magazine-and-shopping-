@@ -51,6 +51,7 @@
 
 
     @yield('style')
+
 </head>
 <body>
 
@@ -162,8 +163,10 @@
             <!-- Right links -->
             <ul class="navbar-nav ms-auto d-flex flex-row">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/unread/{{ Auth::user()->id }}">unread</a>
+                <li class="nav-item mr-3">
+                    <a href="/unread/{{ Auth::user()->id }}"class="nav-link"><i class="fas fa-envelope fa-lg"><span class='badge rounded-pill badge-notification bg-danger'>{{ $count }}</span></i></a>
+
+
                 </li>
                 <!-- Notification dropdown -->
                 @guest

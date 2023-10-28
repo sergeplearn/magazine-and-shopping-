@@ -41,7 +41,7 @@
                             <hr>
                     @include('forms.reservation')
                             <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-rounded pt-2  w-25"> save changes</button>
+                        <button type="submit" class="btn btn-primary btn-rounded pt-2  w-100"> save changes</button>
                     </div>
 
                                  </div>

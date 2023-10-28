@@ -69,8 +69,9 @@ class CategoryController extends Controller
     public function destroy(category $category)
     {
         $this->authorize('delete', $category);
+        $category->unsearchable();
     $category->delete();
-        return redirect()->route('category.create')->with('deleted','datat was errers');
+        return redirect()->route('category.index')->with('deleted','datat was errers');
     }
 
     /**
