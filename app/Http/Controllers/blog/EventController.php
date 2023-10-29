@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\blog;
 
 use App\event;
-use App\Events\BokkingReservationEvent;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationRequest;
-use App\Rules\DateBetween;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-
 
 
 class EventController extends Controller
@@ -20,11 +17,7 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['store']);
 
-    }
 
 
     public function index()
@@ -72,10 +65,10 @@ class EventController extends Controller
       // event(new BokkingReservationEvent($event));
        if(!Auth::user() || Auth::user()->role === 'user')
        {
-           return redirect('/thanks');
+           return redirect()->route('reservation.thanks');
        }
 
-       return redirect()->route('event.index');
+       return redirect()->route('event.index')->with('created','message');
     }
     public function edit(event $event)
     {
@@ -100,7 +93,7 @@ class EventController extends Controller
         $this->authorize('update', $event);
 
         $event->update($request->validated());
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->with('created','message');
     }
 
     /**
@@ -113,7 +106,7 @@ class EventController extends Controller
     {$this->authorize('delete', $event);
         $event->delete();
         $event->unsearchable();
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->with('deleted','message');
     }
 
 

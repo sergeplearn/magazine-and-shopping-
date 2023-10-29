@@ -15,7 +15,7 @@
 
 
 
-
+    @include('alert.alert')
 
 
     <div class="row ">
@@ -149,8 +149,9 @@
 
                         </td>
                         <td>
+                            @can('update', $postproduct)
                             <a href="{{ route('postproduct.edit',$postproduct->slug) }}" class="btn btn-rounded btn-sm btn-info"> edit</a>
-
+                            @endcan
                         </td>
                         <td>
                             @can('delete', $postproduct)

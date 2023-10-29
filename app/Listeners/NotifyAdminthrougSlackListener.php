@@ -29,7 +29,7 @@ class NotifyAdminthrougSlackListener implements ShouldQueue
     public function handle(NewUserHasRegisterEvent $event)
     {
 
-foreach (User::where('role',1)->cursor() as $user) {
+foreach (User::where('role',1)->where('role',2)->cursor() as $user) {
     $user->Notify(new AdminNotificationForNewUser($event->newuser));
 }
     }

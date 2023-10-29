@@ -10,12 +10,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 class ShopcategoryController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['show','index']);
 
-
-    }
     public function index()
 
     {
@@ -52,7 +47,7 @@ class ShopcategoryController extends Controller
         $this->authorize('create', shop_category::class);
        $shop_category = $request->user()->shop_categorys()->create($this->shopcategoryvalidate());
        $this->storeimage($shop_category);
-        return redirect()->route('shop_category.index');
+        return redirect()->route('shop_category.index')->with('created','message');
     }
 
     /**
@@ -88,7 +83,7 @@ class ShopcategoryController extends Controller
         $this->authorize('update', $shop_category);
         $shop_category->update($this->shopcategoryvalidate());
         $this->storeimage($shop_category);
-        return redirect()->route('shop_category.index');
+        return redirect()->route('shop_category.index')->with('created','message');
     }
 
     /**
@@ -102,7 +97,7 @@ class ShopcategoryController extends Controller
         $this->authorize('delete', $shop_category);
         $shop_category->unsearchable();
         $shop_category->delete();
-        return redirect()->route('shop_category.index');
+        return redirect()->route('shop_category.index')->with('deleted','message');
     }
 
     /**

@@ -83,7 +83,7 @@
                                 <h1 class="mb-3 h4">Learn Bootstrap 5 with MDB</h1>
                                 <h5 class="mb-4">Best & free guide of responsive web design</h5>
 
-                                <a class="btn btn-outline-light btn-lg m-2" href="/reservat" >Reservation</a>
+                                <a class="btn btn-outline-light btn-lg m-2" href="{{ route('reservation.create') }}" >Reservation</a>
 
                             </div>
                         </div>

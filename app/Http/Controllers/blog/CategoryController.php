@@ -1,21 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\blog;
 
 use App\category;
-use App\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Notification;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['show']);
 
-
-    }
 
 
     public function index()
@@ -61,7 +55,7 @@ class CategoryController extends Controller
         $category->update($this->validating());
         $this->storeimage($category);
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('created','message');
     }
 
 

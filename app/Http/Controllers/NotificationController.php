@@ -23,8 +23,9 @@ class NotificationController extends Controller
         $user = \App\User::find($id);
 
         $unread = $user->unreadNotifications;
+        $count = $user->unreadNotifications->count();
 
-        return view('notification.admin.unreadnewuser',compact('unread','count'));
+        return view('notification.admin.unreadnewuser',compact('unread'));
     }
 
     public function read($id, Request $request)

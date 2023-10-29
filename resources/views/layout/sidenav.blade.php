@@ -69,6 +69,10 @@
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
                 </a>
 
+                <a href="{{ route('User.index') }}" class="list-group-item list-group-item-action py-2 ripple"
+                ><i class="fas fa-plus me-3 fa-fw"></i><span>Admin</span></a
+                >
+
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"
                 ></a
                 >
@@ -113,7 +117,7 @@
                 <a href="/" class="list-group-item list-group-item-action py-2 ripple"
                 ><i class="fas fa-users fa-fw me-3"></i><span>Blog</span></a
                 >
-                <a href="/shop" class="list-group-item list-group-item-action py-2 ripple"
+                <a href="{{ route('shop.show') }}" class="list-group-item list-group-item-action py-2 ripple"
                 ><i class="fas fa-money-bill fa-fw me-3"></i><span>shop</span></a
                 >
             </div>
@@ -164,7 +168,14 @@
             <ul class="navbar-nav ms-auto d-flex flex-row">
 
                 <li class="nav-item mr-3">
-                    <a href="/unread/{{ Auth::user()->id }}"class="nav-link"><i class="fas fa-envelope fa-lg"><span class='badge rounded-pill badge-notification bg-danger'>{{ $count }}</span></i></a>
+                    <a href="/unread/{{ Auth::user()->id }}"class="nav-link"><i class="fas fa-envelope fa-lg"><span class='badge rounded-pill badge-notification bg-danger'>
+
+                                @if( $count == 0)
+                                @else
+                                    {{ $count }}
+                                @endif
+
+                               </span></i></a>
 
 
                 </li>

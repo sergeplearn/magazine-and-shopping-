@@ -7,7 +7,7 @@
 
 
 
-
+    @include('alert.alert')
 
 
     <div class="my-5">

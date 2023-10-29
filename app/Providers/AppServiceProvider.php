@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
             'mdmagazine.category.edit','shop.category.index','shop.category.edit','shop.category.create',
              'mdmagazine.time.index','mdmagazine.time.create','mdmagazine.time.edit',
             'mdmagazine.reservation.index','mdmagazine.reservation.create','mdmagazine.reservation.edit',
-            'notification.admin.unreadnewuser','home'],function ($view){
+            'notification.admin.unreadnewuser','home','admin.index','admin.create'],function ($view){
             $view->with('count',\App\User::find(Auth::user()->id)->unreadNotifications->count());
         });
 

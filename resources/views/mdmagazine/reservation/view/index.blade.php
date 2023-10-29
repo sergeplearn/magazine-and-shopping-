@@ -35,7 +35,7 @@
     </div>
 
 
-    <form class=" needs-validation pt-2" novalidate method="get" action="/reservation"   >
+    <form class=" needs-validation pt-2" novalidate method="get" action="{{ route('reservation.index') }}"   >
         @csrf
         <div class="col-md-3">
         <div class="input-group my-2">

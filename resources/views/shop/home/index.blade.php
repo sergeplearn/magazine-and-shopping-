@@ -117,7 +117,7 @@
                         </ul>
 
                         <!-- Search -->
-                        <form class="w-auto py-1"  action="/shop" method="get"  style="max-width: 12rem">
+                        <form class="w-auto py-1"  action="{{ route('shop.show') }}" method="get"  style="max-width: 12rem">
 
                             <div class="input-group">
                                 <div class="form-outline">

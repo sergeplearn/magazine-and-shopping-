@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\blog;
 
+use App\Http\Controllers\Controller;
 use App\Rules\TimeBetween;
 use App\timeinterval;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class TimeintervalController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+
         $this->authorizeResource(timeinterval::class, 'timeinterval');
     }
 
@@ -51,7 +52,7 @@ class TimeintervalController extends Controller
 
 
         $request->user()->timeintervals()->create($this->validatingtimeinterval($request));
-        return redirect()->route('timeinterval.create');
+        return redirect()->route('timeinterval.create')->with('created','message');
     }
 
     public function edit(timeinterval $timeinterval)
@@ -70,7 +71,7 @@ class TimeintervalController extends Controller
     {
 
         $timeinterval->update($this->validatingtimeinterval($request));
-        return redirect()->route('timeinterval.index');
+        return redirect()->route('timeinterval.index')->with('created','message');
     }
 
     /**
@@ -82,7 +83,7 @@ class TimeintervalController extends Controller
     public function destroy(timeinterval $timeinterval)
     {
         $timeinterval->delete();
-        return redirect()->route('timeinterval.index');
+        return redirect()->route('timeinterval.index')->with('deleted','message');
     }
 
     /**

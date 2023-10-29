@@ -43,7 +43,7 @@
         <div class="row">
             @foreach($categories as $category)
             <div class="col-md-4 p-2 fancy_card">
-                <a href="{{ route('postproduct.show',$category->slug)}}" class="text-black">
+                <a href="{{ route('postproduct.show',$category->slug) }}" class="text-black">
 
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                         <img src="{{ asset('sm_img/' . $category->sm_img)  }}" class="img-fluid pb-3"/>

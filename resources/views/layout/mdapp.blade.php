@@ -80,13 +80,13 @@
 
                         <a class="nav-link"
                            id="ex1-tab-1"
-                           href="/shop"
+                           href="{{ route('shop.show') }}"
                         >shopping</a>
                     </li>
 
 
                     <li class="nav-item " role="presentation">
-                        <a class="nav-link" href="/reservation">check reservations</a>
+                        <a class="nav-link" href="{{ route('reservation.index') }}">check reservations</a>
                     </li>
 
                 </ul>

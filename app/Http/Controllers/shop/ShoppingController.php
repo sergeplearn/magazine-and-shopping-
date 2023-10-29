@@ -12,12 +12,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 class ShoppingController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['show','index']);
 
-
-    }
 
     public function index()
     {
@@ -52,7 +47,7 @@ class ShoppingController extends Controller
         $this->authorize('create', shopping::class);
         $shopping =  $request->user()->shoppings()->create($this->shoppingvalidation());
         $this->storeimage($shopping);
-        return redirect()->route('shopping.index');
+        return redirect()->route('shopping.index')->with('created','message');
     }
 
     /**
@@ -85,7 +80,7 @@ class ShoppingController extends Controller
         $this->authorize('update', $shopping);
         $shopping->update($this->shoppingvalidation());
         $this->storeimage($shopping);
-        return redirect()->route('shopping.index');
+        return redirect()->route('shopping.index')->with('created','message');
     }
 
     /**
@@ -99,7 +94,7 @@ class ShoppingController extends Controller
         $this->authorize('delete', $shopping);
         $shopping->unsearchable();
         $shopping->delete();
-        return redirect()->route('shopping.index');
+        return redirect()->route('shopping.index')->with('deleted','message');
     }
 
     /**

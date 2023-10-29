@@ -5,7 +5,7 @@
 
 @section('content')
 
-    @include('alert.alert')
+
 
     <div class="row">
         <div class="col-md-1"></div>

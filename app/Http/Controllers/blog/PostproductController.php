@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\blog;
 
 //use App\Http\Requests\PostproductRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PostproductRequest;
 use App\postproduct;
-use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class PostproductController extends Controller
@@ -15,12 +15,7 @@ class PostproductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['show']);
 
-
-    }
 
     public function index()
     {
@@ -58,7 +53,7 @@ class PostproductController extends Controller
 
        $postproduct = $request->user()->postproducts()->create($request->validated());
        $this->storeimages($postproduct);
-        return redirect()->route('postproduct.index');
+        return redirect()->route('postproduct.index')->with('created','message');
 
     }
 
@@ -94,7 +89,7 @@ class PostproductController extends Controller
         $this->authorize('update', $postproduct);
         $postproduct->update($request->validated());
         $this->storeimages($postproduct);
-        return redirect()->route('postproduct.index');
+        return redirect()->route('postproduct.index')->with('created','message');
     }
 
     /**
@@ -108,7 +103,7 @@ class PostproductController extends Controller
         $this->authorize('delete', $postproduct);
         $postproduct->unsearchable();
         $postproduct->delete();
-        return redirect()->back();
+        return redirect()->route('postproduct.index')->with('deleted','message');
     }
 
 
